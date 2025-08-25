@@ -1,0 +1,34 @@
+# Arquivos compilados
+*.class
+
+# Arquivos de package
+*.jar
+*.war
+*.nar
+*.ear
+
+# Diretórios de build
+/build/
+/bin/
+/target/
+/dist/
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+*.log
+
+# Arquivos de dados do sistema (opcional, depende se você quer versionar os dados de teste)
+/data/*.data
