@@ -1,5 +1,20 @@
 # Sistema de Gerenciamento de Eventos - Anhembi Morumbi
 
+```
+           █████╗ ███╗   ██╗██╗  ██╗███████╗███╗   ███╗██████╗ ██╗
+          ██╔══██╗████╗  ██║██║  ██║██╔════╝████╗ ████║██╔══██╗██║
+          ███████║██╔██╗ ██║███████║█████╗  ██╔████╔██║██████╔╝██║
+          ██╔══██║██║╚██╗██║██╔══██║██╔══╝  ██║╚██╔╝██║██╔══██╗██║
+          ██║  ██║██║ ╚████║██║  ██║███████╗██║ ╚═╝ ██║██████╔╝██║
+          ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚═════╝ ╚═╝
+                    ███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗███╗   ███╗██╗
+                    ████╗ ████║██╔═══██╗██╔══██╗██║   ██║████╗ ████║██║
+                    ██╔████╔██║██║   ██║██████╔╝██║   ██║██╔████╔██║██║
+                    ██║╚██╔╝██║██║   ██║██╔══██╗██║   ██║██║╚██╔╝██║██║
+                    ██║ ╚═╝ ██║╚██████╔╝██║  ██║╚██████╔╝██║ ╚═╝ ██║██║
+                    ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝
+```
+
 Sistema desenvolvido como projeto para a disciplina de Programação de Soluções Computacionais da Faculdade Anhembi Morumbi.
 
 > **Observação**: Para fim de estudo, este projeto foi desenvolvido utilizando a arquitetura MVC (Model-View-Controller) de forma didática, focando nos conceitos fundamentais de programação orientada a objetos e boas práticas de desenvolvimento.
