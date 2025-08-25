@@ -1,5 +1,5 @@
 /**
- * Faculdade Anhambi Morumbi
+ * Universidade Anhembi Morumbi
  * Curso: Análise e Desenvolvimento de Sistemas
  * Período: 2025-2 N
  * 
@@ -49,22 +49,22 @@ public class Main {
     }
 
     /**
-     * Exibe o cabeçalho do sistema com o logo da Anhembi Morumbi em ASCII art.
+     * Exibe o cabeçalho do sistema com o logo da Universidade Anhembi Morumbi em ASCII art.
      */
     private static void mostrarCabecalho() {
         limparTela();
-        System.out.println("           █████╗ ███╗   ██╗██╗  ██╗███████╗███╗   ███╗██████╗ ██╗");
-        System.out.println("          ██╔══██╗████╗  ██║██║  ██║██╔════╝████╗ ████║██╔══██╗██║");
-        System.out.println("          ███████║██╔██╗ ██║███████║█████╗  ██╔████╔██║██████╔╝██║");
-        System.out.println("          ██╔══██║██║╚██╗██║██╔══██║██╔══╝  ██║╚██╔╝██║██╔══██╗██║");
-        System.out.println("          ██║  ██║██║ ╚████║██║  ██║███████╗██║ ╚═╝ ██║██████╔╝██║");
-        System.out.println("          ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚═════╝ ╚═╝");
-        System.out.println("                    ███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗███╗   ███╗██╗");
-        System.out.println("                    ████╗ ████║██╔═══██╗██╔══██╗██║   ██║████╗ ████║██║");
-        System.out.println("                    ██╔████╔██║██║   ██║██████╔╝██║   ██║██╔████╔██║██║");
-        System.out.println("                    ██║╚██╔╝██║██║   ██║██╔══██╗██║   ██║██║╚██╔╝██║██║");
-        System.out.println("                    ██║ ╚═╝ ██║╚██████╔╝██║  ██║╚██████╔╝██║ ╚═╝ ██║██║");
-        System.out.println("                    ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝");
+        System.out.println("        █████╗ ███╗   ██╗██╗  ██╗███████╗███╗   ███╗██████╗ ██╗");
+        System.out.println("       ██╔══██╗████╗  ██║██║  ██║██╔════╝████╗ ████║██╔══██╗██║");
+        System.out.println("       ███████║██╔██╗ ██║███████║█████╗  ██╔████╔██║██████╔╝██║");
+        System.out.println("       ██╔══██║██║╚██╗██║██╔══██║██╔══╝  ██║╚██╔╝██║██╔══██╗██║");
+        System.out.println("       ██║  ██║██║ ╚████║██║  ██║███████╗██║ ╚═╝ ██║██████╔╝██║");
+        System.out.println("       ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚═════╝ ╚═╝");
+        System.out.println("███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗███╗   ███╗██████╗ ██╗");
+        System.out.println("████╗ ████║██╔═══██╗██╔══██╗██║   ██║████╗ ████║██╔══██╗██║");
+        System.out.println("██╔████╔██║██║   ██║██████╔╝██║   ██║██╔████╔██║██████╔╝██║");
+        System.out.println("██║╚██╔╝██║██║   ██║██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗██║");
+        System.out.println("██║ ╚═╝ ██║╚██████╔╝██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝██║");
+        System.out.println("╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝");
         System.out.println("\n                         Sistema de Gerenciamento de Eventos");
         System.out.println("                    Análise e Desenvolvimento de Sistemas - 2025-2");
         System.out.println("                           Desenvolvido por Ivan Lemos");
