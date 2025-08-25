@@ -1,0 +1,2 @@
+Main-Class: sistema.Main
+Class-Path: lib/jline-3.21.0.jar
