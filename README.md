@@ -51,10 +51,16 @@ O sistema permite o gerenciamento completo de eventos, incluindo:
 ## Tecnologias e Ferramentas
 
 - **Linguagem**: Java 11+
+- **IDE**: Visual Studio Code
 - **Bibliotecas**:
-  - JLine 3.21.0 (interface de terminal aprimorada)
-- **Persistência**: Arquivos (.data)
-- **Build**: Scripts shell personalizados
+  - JLine 3.21.0 (para melhor experiência no terminal)
+- **Persistência**: 
+  - Arquivos `.data` para armazenamento
+  - Formato próprio de serialização
+- **Build e Execução**: 
+  - Scripts shell para automatização
+  - Sistema de build personalizado
+  - Geração de JAR executável em target/dist/
 
 ## Estrutura do Projeto
 
@@ -64,64 +70,96 @@ O sistema permite o gerenciamento completo de eventos, incluindo:
 │   └── main/
 │       └── java/
 │           └── sistema/
-│               ├── controller/  # Controladores
+│               ├── Main.java     # Classe principal
+│               ├── controller/    # Controladores
 │               │   ├── EventoController.java
 │               │   └── UsuarioController.java
-│               ├── model/      # Modelos
+│               ├── model/        # Modelos
 │               │   ├── Categoria.java
 │               │   ├── Evento.java
 │               │   └── Usuario.java
-│               ├── util/       # Utilitários
-│               │   └── FileManager.java
-│               └── view/       # Interface
+│               └── util/         # Utilitários
+│                   └── FileManager.java
 ├── data/                  # Dados persistentes
-│   ├── events.data
-│   └── users.data
+│   ├── events.data       # Armazena eventos
+│   └── users.data        # Armazena usuários
 ├── lib/                   # Dependências
-│   └── jline-3.21.0.jar
-├── target/               # Arquivos de build
-│   └── dist/            # Distribuição
-└── scripts/             # Scripts de build
-    ├── build.sh
-    └── preparar_dist.sh
+│   └── jline-3.21.0.jar  # Biblioteca para interface
+├── target/               # Arquivos compilados
+│   └── dist/            # Distribuição final
+├── build.sh             # Script principal de build
+├── manifest.txt         # Manifesto do JAR
+└── README.md            # Documentação
 ```
 
 ## Compilação e Execução
 
 ### Compilando o Projeto
 
-O projeto inclui scripts de build automatizados. Para compilar:
+O projeto pode ser compilado e executado de duas formas:
 
-1. Dê permissão de execução ao script:
-   ```bash
-   chmod +x build.sh
-   ```
-
-2. Execute o script de build:
+1. **Usando o script de build (recomendado):**
    ```bash
    ./build.sh
    ```
+   Este script irá:
+   - Limpar os diretórios target/
+   - Compilar todos os arquivos .java
+   - Copiar as dependências necessárias
+   - Gerar o arquivo JAR em target/dist/AnhembiEventos.jar
+   - Copiar os arquivos de dados e bibliotecas
+   - Testar a execução do JAR gerado
 
-O script irá:
-- Criar os diretórios necessários
-- Compilar os arquivos Java
-- Copiar dependências e recursos
-- Gerar o arquivo JAR executável
+2. **Compilação e execução manual:**
+   ```bash
+   # Compilar
+   cd src/main/java
+   javac sistema/Main.java
+
+   # Executar
+   java -cp .:../../../lib/jline-3.21.0.jar sistema.Main
+   ```
 
 ### Executando o Sistema
 
-Há duas formas de executar o sistema:
+Após a compilação, você pode executar o sistema de três formas:
 
-1. Usando o JAR diretamente:
-   ```bash
-   java -jar AnhembiEventos.jar
-   ```
-
-2. A partir da pasta de distribuição:
+1. **A partir do JAR gerado (recomendado):**
    ```bash
    cd target/dist
    java -jar AnhembiEventos.jar
    ```
+
+2. **Diretamente dos arquivos compilados:**
+   ```bash
+   java -cp src/main/java:lib/jline-3.21.0.jar sistema.Main
+   ```
+
+3. **Usando o script de build:**
+   ```bash
+   ./build.sh
+   ```
+   O script já inclui um teste de execução ao final.
+
+### Estrutura do Build
+
+O processo de build organiza os arquivos da seguinte forma:
+
+```
+target/
+└── dist/
+    ├── AnhembiEventos.jar  # Executável principal
+    ├── lib/                # Bibliotecas necessárias
+    │   └── jline-3.21.0.jar
+    └── data/              # Arquivos de dados
+        ├── events.data
+        └── users.data
+```
+
+O arquivo JAR gerado inclui:
+- Todas as classes compiladas do sistema
+- Manifesto com a configuração do classpath
+- Configuração da classe principal (Main)
 
 ## Distribuição
 
