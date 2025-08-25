@@ -23,29 +23,38 @@ fi
 # Limpa e cria diretórios
 log "Preparando diretórios..."
 rm -rf target
-mkdir -p target/classes target/dist/lib
+mkdir -p target/classes target/dist/lib target/dist/data
 
 # Compila os arquivos Java
 log "Compilando arquivos Java..."
-javac -d target/classes -cp "lib/*" $(find src/main/java -name "*.java")
+find src/main/java -name "*.java" > sources.txt
+javac -d target/classes -cp "lib/*" @sources.txt
+rm sources.txt
 
 # Verifica se a compilação foi bem sucedida
 if [ $? -ne 0 ]; then
     error "Erro durante a compilação"
 fi
 
-# Copia os arquivos de dependência
+# Copia as dependências e recursos
 log "Copiando recursos..."
 cp lib/* target/dist/lib/
-cp -r data target/dist/
+cp -r data/* target/dist/data/
 
-# Cria o JAR
-log "Criando arquivo JAR..."
-jar cfm target/dist/AnhembiEventos.jar manifest.txt -C target/classes .
+# Move os arquivos compilados para o diretório correto
+cd target/classes
+jar cfm ../dist/AnhembiEventos.jar ../../manifest.txt ./*
+cd ../..
 
 # Verifica se a criação do JAR foi bem sucedida
 if [ $? -ne 0 ]; then
     error "Erro ao criar o arquivo JAR"
+fi
+
+# Testa se o JAR foi criado corretamente
+log "Testando o JAR..."
+if ! java -jar target/dist/AnhembiEventos.jar --version 2>/dev/null; then
+    error "Erro: O JAR não foi criado corretamente"
 fi
 
 log "Build concluído com sucesso!"

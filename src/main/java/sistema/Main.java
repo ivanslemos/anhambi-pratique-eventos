@@ -100,22 +100,34 @@ public class Main {
         System.out.println("3. Sair");
         System.out.print("Escolha uma opção: ");
 
-        int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        try {
+            String entrada = scanner.nextLine().trim();
+            int opcao;
+            
+            try {
+                opcao = Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida! Digite um número.");
+                return;
+            }
 
-        switch (opcao) {
-            case 1:
-                fazerLogin();
-                break;
-            case 2:
-                cadastrarNovoUsuario();
-                break;
-            case 3:
-                System.out.println("Saindo do sistema...");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Opção inválida!");
+            switch (opcao) {
+                case 1:
+                    fazerLogin();
+                    break;
+                case 2:
+                    cadastrarNovoUsuario();
+                    break;
+                case 3:
+                    System.out.println("Saindo do sistema...");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida! Digite um número entre 1 e 3.");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao ler entrada. Por favor, tente novamente.");
+            scanner.nextLine(); // Limpar o buffer em caso de erro
         }
     }
 
@@ -173,15 +185,35 @@ public class Main {
      * Solicita o email do usuário e verifica se ele está cadastrado.
      */
     private static void fazerLogin() {
-        System.out.print("Digite seu email: ");
-        String email = scanner.nextLine();
-        
-        Usuario usuario = usuarioController.buscarUsuarioPorEmail(email);
-        if (usuario != null) {
-            usuarioLogado = usuario;
-            System.out.println("Login realizado com sucesso!");
-        } else {
-            System.out.println("Usuário não encontrado!");
+        while (true) {
+            System.out.print("Digite seu email (ou 'q' para voltar): ");
+            String email = scanner.nextLine().trim();
+            
+            // Verifica se o usuário quer sair
+            if (email.equalsIgnoreCase("q")) {
+                return;
+            }
+            
+            // Validar email vazio
+            if (email.isEmpty()) {
+                System.out.println("O email não pode estar vazio! Tente novamente.");
+                continue;
+            }
+
+            // Validar formato básico do email
+            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                System.out.println("Formato de email inválido! Tente novamente.");
+                continue;
+            }
+            
+            Usuario usuario = usuarioController.buscarUsuarioPorEmail(email);
+            if (usuario != null) {
+                usuarioLogado = usuario;
+                System.out.println("Login realizado com sucesso!");
+                break;
+            } else {
+                System.out.println("Usuário não encontrado! Tente novamente.");
+            }
         }
     }
 
