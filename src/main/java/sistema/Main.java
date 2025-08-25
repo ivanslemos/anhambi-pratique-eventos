@@ -94,40 +94,47 @@ public class Main {
      * cadastre-se como novo usuário ou saia do sistema.
      */
     private static void mostrarMenuInicial() {
-        mostrarCabecalho();
-        System.out.println("1. Login");
-        System.out.println("2. Cadastrar novo usuário");
-        System.out.println("3. Sair");
-        System.out.print("Escolha uma opção: ");
+        while (true) {
+            mostrarCabecalho();
+            System.out.println("1. Login");
+            System.out.println("2. Cadastrar novo usuário");
+            System.out.println("3. Sair");
+            System.out.print("Escolha uma opção: ");
 
-        try {
-            String entrada = scanner.nextLine().trim();
-            int opcao;
-            
             try {
-                opcao = Integer.parseInt(entrada);
-            } catch (NumberFormatException e) {
-                System.out.println("Opção inválida! Digite um número.");
-                return;
-            }
+                String entrada = scanner.nextLine().trim();
+                int opcao;
+                
+                try {
+                    opcao = Integer.parseInt(entrada);
+                } catch (NumberFormatException e) {
+                    System.out.println("Opção inválida! Digite um número.");
+                    continue;
+                }
 
-            switch (opcao) {
-                case 1:
-                    fazerLogin();
-                    break;
-                case 2:
-                    cadastrarNovoUsuario();
-                    break;
-                case 3:
-                    System.out.println("Saindo do sistema...");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opção inválida! Digite um número entre 1 e 3.");
+                switch (opcao) {
+                    case 1:
+                        fazerLogin();
+                        return;
+                    case 2:
+                        cadastrarNovoUsuario();
+                        return;
+                    case 3:
+                        System.out.println("Saindo do sistema...");
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Opção inválida! Digite um número entre 1 e 3.");
+                        Thread.sleep(2000); // Pausa para ler a mensagem
+                }
+            } catch (Exception e) {
+                System.out.println("Erro ao ler entrada. Por favor, tente novamente.");
+                try {
+                    Thread.sleep(2000); // Pausa para ler a mensagem
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
             }
-        } catch (Exception e) {
-            System.out.println("Erro ao ler entrada. Por favor, tente novamente.");
-            scanner.nextLine(); // Limpar o buffer em caso de erro
         }
     }
 
@@ -136,47 +143,67 @@ public class Main {
      * Permite gerenciar eventos e participações.
      */
     private static void mostrarMenuPrincipal() {
-        mostrarCabecalho();
-        System.out.println("1. Cadastrar novo evento");
-        System.out.println("2. Listar eventos próximos");
-        System.out.println("3. Listar eventos ocorrendo agora");
-        System.out.println("4. Listar eventos passados");
-        System.out.println("5. Inscrever-se em um evento");
-        System.out.println("6. Cancelar inscrição em evento");
-        System.out.println("7. Ver meus eventos");
-        System.out.println("8. Logout");
-        System.out.print("Escolha uma opção: ");
+        while (true) {
+            mostrarCabecalho();
+            System.out.println("1. Cadastrar novo evento");
+            System.out.println("2. Listar eventos próximos");
+            System.out.println("3. Listar eventos ocorrendo agora");
+            System.out.println("4. Listar eventos passados");
+            System.out.println("5. Inscrever-se em um evento");
+            System.out.println("6. Cancelar inscrição em evento");
+            System.out.println("7. Ver meus eventos");
+            System.out.println("8. Logout");
+            System.out.print("Escolha uma opção: ");
 
-        int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+            try {
+                String entrada = scanner.nextLine().trim();
+                int opcao;
+                
+                try {
+                    opcao = Integer.parseInt(entrada);
+                } catch (NumberFormatException e) {
+                    System.out.println("Opção inválida! Digite um número.");
+                    Thread.sleep(2000);
+                    continue;
+                }
 
-        switch (opcao) {
-            case 1:
-                cadastrarEvento();
-                break;
-            case 2:
-                listarEventosProximos();
-                break;
-            case 3:
-                listarEventosOcorrendo();
-                break;
-            case 4:
-                listarEventosPassados();
-                break;
-            case 5:
-                inscreverEmEvento();
-                break;
-            case 6:
-                cancelarInscricao();
-                break;
-            case 7:
-                verMeusEventos();
-                break;
-            case 8:
-                logout();
-                break;
-            default:
-                System.out.println("Opção inválida!");
+                switch (opcao) {
+                    case 1:
+                        cadastrarEvento();
+                        return;
+                    case 2:
+                        listarEventosProximos();
+                        return;
+                    case 3:
+                        listarEventosOcorrendo();
+                        return;
+                    case 4:
+                        listarEventosPassados();
+                        return;
+                    case 5:
+                        inscreverEmEvento();
+                        return;
+                    case 6:
+                        cancelarInscricao();
+                        return;
+                    case 7:
+                        verMeusEventos();
+                        return;
+                    case 8:
+                        logout();
+                        return;
+                    default:
+                        System.out.println("Opção inválida! Digite um número entre 1 e 8.");
+                        Thread.sleep(2000);
+                }
+            } catch (Exception e) {
+                System.out.println("Erro ao ler entrada. Por favor, tente novamente.");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
+            }
         }
     }
 
